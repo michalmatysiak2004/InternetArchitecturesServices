@@ -31,7 +31,7 @@ public class Club implements Comparable<Club>, Serializable {
     @Column(name = "titles")
     private int titles;
 
-    @OneToMany(mappedBy = "club", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "club", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     private List<Player> players = new ArrayList<>();
 
 

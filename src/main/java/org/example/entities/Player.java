@@ -32,7 +32,7 @@ public class Player implements Comparable<Player>, Serializable {
     @Column(name="goals")
     private int goals;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "club_id")
     Club club;
 
