@@ -9,4 +9,5 @@ import java.util.UUID;
 
 public interface PlayerRepository extends JpaRepository<Player, UUID> {
     List<Player> findByClub(Club club);
+
 }

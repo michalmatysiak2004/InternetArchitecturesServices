@@ -1,5 +1,6 @@
 package org.example.entities;
 
+import jakarta.annotation.PostConstruct;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -11,9 +12,10 @@ import java.util.UUID;
 @Setter
 @Getter
 @Builder
-@Entity
+
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
 @Table(name= "clubs" )
 public class Club implements Comparable<Club>, Serializable {
     @Id
@@ -32,10 +34,7 @@ public class Club implements Comparable<Club>, Serializable {
     @OneToMany(mappedBy = "club", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<Player> players = new ArrayList<>();
 
-    @PrePersist
-    public void init(){
-        if(id==null) this.id = UUID.randomUUID();
-    }
+
 
     @Override
     public int compareTo(Club o) {

@@ -1,5 +1,6 @@
 package org.example.entities;
 
+import jakarta.annotation.PostConstruct;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -35,10 +36,7 @@ public class Player implements Comparable<Player>, Serializable {
     @JoinColumn(name = "club_id")
     Club club;
 
-    @PrePersist
-    public void init(){
-        if(id==null) this.id = UUID.randomUUID();
-    }
+
 
     @Override // natural ordering lastname-> firstname-> goals
     public int compareTo(Player o) {

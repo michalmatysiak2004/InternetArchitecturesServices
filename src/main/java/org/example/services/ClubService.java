@@ -12,11 +12,8 @@ import java.util.UUID;
 public class ClubService {
     @Autowired
     private ClubRepository clubRepository;
+    // do updatu podczas commandlinera
 
-
-    public Club saveClub(Club club){
-        return clubRepository.save(club);
-    }
 
     public List<Club> fetchClubList(){
         return (List<Club>) clubRepository.findAll();
