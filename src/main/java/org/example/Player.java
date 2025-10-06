@@ -14,8 +14,10 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Player implements Comparable<Player>, Serializable {
+
     @Id
-    UUID uuid = UUID.randomUUID();
+    @Column(name="player_id")
+    UUID id;
 
     @Column(name="first_name")
     private String firstName;
@@ -33,7 +35,10 @@ public class Player implements Comparable<Player>, Serializable {
     @JoinColumn(name = "club_id")
     Club club;
 
-
+    @PrePersist
+    public void init(){
+        if(id==null) this.id = UUID.randomUUID();
+    }
 
     @Override // natural ordering lastname-> firstname-> goals
     public int compareTo(Player o) {

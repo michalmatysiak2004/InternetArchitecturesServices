@@ -6,6 +6,8 @@ import lombok.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+
 @Setter
 @Getter
 @Builder
@@ -14,15 +16,26 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name= "clubs" )
 public class Club implements Comparable<Club>, Serializable {
+    @Id
+    @Column(name="club_id")
+    UUID id;
+
     @Column(name = "name" )
     private String name;
+
     @Column(name = "country")
     private String country;
+
     @Column(name = "titles")
     private int titles;
+
     @OneToMany(mappedBy = "club", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<Player> players = new ArrayList<>();
 
+    @PrePersist
+    public void init(){
+        if(id==null) this.id = UUID.randomUUID();
+    }
 
     @Override
     public int compareTo(Club o) {
