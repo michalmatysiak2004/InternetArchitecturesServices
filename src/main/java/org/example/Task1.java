@@ -2,6 +2,8 @@ package org.example;
 
 
 import org.example.DTOs.PlayerDTO;
+import org.example.entities.Club;
+import org.example.entities.Player;
 
 import java.io.*;
 import java.util.ArrayList;

@@ -1,7 +1,7 @@
 package org.example.repositories;
 
-import org.example.Club;
-import org.example.Player;
+import org.example.entities.Club;
+import org.example.entities.Player;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

@@ -1,6 +1,6 @@
 package org.example.repositories;
 
-import org.example.Club;
+import org.example.entities.Club;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import java.util.UUID;
