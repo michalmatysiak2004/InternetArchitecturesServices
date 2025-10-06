@@ -1,19 +1,27 @@
 package org.example;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 @Setter
 @Getter
 @Builder
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name= "clubs" )
 public class Club implements Comparable<Club>, Serializable {
+    @Column(name = "name" )
     private String name;
+    @Column(name = "country")
     private String country;
+    @Column(name = "titles")
     private int titles;
-    private List<Player> players;
+    @OneToMany(mappedBy = "club", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    private List<Player> players = new ArrayList<>();
 
 
     @Override
