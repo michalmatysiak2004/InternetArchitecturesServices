@@ -41,9 +41,12 @@ public class PlayerController {
     public PlayerReadDTO getPlayer(@PathVariable UUID uuid){
         return playerService.findById(uuid);
     }
-    //do przetestowania
+
+
     @DeleteMapping("/players/{uuid}")
     public void deletePlayer(@PathVariable UUID uuid){
         playerService.deletePlayer(uuid);
     }
+
+
 }

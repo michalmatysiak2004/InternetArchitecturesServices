@@ -7,6 +7,7 @@ import org.example.DTOs.PlayerReadDTO;
 import org.example.entities.Club;
 import org.example.entities.Player;
 import org.example.exception.ResourceNotFoundException;
+import org.example.mapper.ClubMapper;
 import org.example.mapper.PlayerMapper;
 import org.example.repositories.ClubRepository;
 import org.example.repositories.PlayerRepository;
@@ -53,6 +54,17 @@ public class PlayerService {
         Club club = optionalClub.get();
 
         return (List<Player>) playerRepository.findByClub(club);
+    }
+    public List<PlayerReadDTO> findPlayersByClub(UUID uuid){
+        Optional<Club> optionalClub = clubRepository.findById(uuid);
+
+        if (optionalClub.isEmpty()) {
+            throw new ResourceNotFoundException("Club not found");
+        }
+        Club club = optionalClub.get();
+        List<Player> players =  playerRepository.findByClub(club);
+
+        return playerMapper.mapToDTO(players);
     }
 
     public Player createEntity(PlayerCreateDTO playerCreateDTO){

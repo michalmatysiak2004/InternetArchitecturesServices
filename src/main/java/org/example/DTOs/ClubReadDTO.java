@@ -11,5 +11,7 @@ import java.util.UUID;
 @Builder
 public class ClubReadDTO {
     private UUID id;
-
+    private String name;
+    private String country;
+    private Integer titles;
 }
