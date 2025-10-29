@@ -3,7 +3,10 @@ package org.example.entities;
 import jakarta.annotation.PostConstruct;
 import jakarta.persistence.*;
 import lombok.*;
-
+import org.hibernate.annotations.AnyDiscriminator;
+import org.springframework.beans.factory.annotation.Value;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Max;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +31,7 @@ public class Club implements Comparable<Club>, Serializable {
     @Column(name = "country")
     private String country;
 
+    @Min(value=0)
     @Column(name = "titles")
     private int titles;
 

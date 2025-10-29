@@ -10,10 +10,14 @@ import java.util.UUID;
 
 @Service
 public class ClubService {
-    @Autowired
-    private ClubRepository clubRepository;
-    // do updatu podczas commandlinera
 
+    private final ClubRepository clubRepository;
+
+
+    @Autowired
+    public ClubService(ClubRepository clubRepository) {
+        this.clubRepository = clubRepository;
+    }
 
     public List<Club> fetchClubList(){
         return (List<Club>) clubRepository.findAll();
