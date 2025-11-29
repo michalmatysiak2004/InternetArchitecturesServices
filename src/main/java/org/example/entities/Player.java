@@ -1,19 +1,41 @@
-package org.example;
+package org.example.entities;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.annotation.PostConstruct;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import lombok.*;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 @Getter
 @Setter
 @Builder
+@Entity
+@Table(name= "players")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Player implements Comparable<Player>, Serializable {
+
+    @Id
+    @Column(name="player_id")
+    UUID id;
+
+    @Column(name="first_name")
     private String firstName;
+
+    @Column(name="last_name")
     private String lastName;
+
+    @Column(name="country")
     private String country;
+
+    @Min(value=0)
+    @Column(name="goals")
     private int goals;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "club_id")
     Club club;
 
 

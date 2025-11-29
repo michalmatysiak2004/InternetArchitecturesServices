@@ -1,19 +1,43 @@
-package org.example;
+package org.example.entities;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-
+import jakarta.annotation.PostConstruct;
+import jakarta.persistence.*;
+import lombok.*;
+import org.hibernate.annotations.AnyDiscriminator;
+import org.springframework.beans.factory.annotation.Value;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Max;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+
 @Setter
 @Getter
 @Builder
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name= "clubs" )
 public class Club implements Comparable<Club>, Serializable {
+    @Id
+    @Column(name="club_id")
+    UUID id;
+
+    @Column(name = "name" )
     private String name;
+
+    @Column(name = "country")
     private String country;
+
+    @Min(value=0)
+    @Column(name = "titles")
     private int titles;
-    private List<Player> players;
+
+    @OneToMany(mappedBy = "club", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    private List<Player> players = new ArrayList<>();
+
 
 
     @Override
