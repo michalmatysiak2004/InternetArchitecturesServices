@@ -40,6 +40,13 @@ public class ClubService {
 
 
 
+    private final ClubRepository clubRepository;
+
+
+    @Autowired
+    public ClubService(ClubRepository clubRepository) {
+        this.clubRepository = clubRepository;
+    }
 
     public List<Club> fetchClubList(){
         return (List<Club>) clubRepository.findAll();
