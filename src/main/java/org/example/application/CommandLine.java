@@ -1,13 +1,11 @@
 package org.example.application;
 
-import lombok.AllArgsConstructor;
+import org.example.DTOs.PlayerCreateDTO;
+import org.example.DTOs.PlayerReadDTO;
 import org.example.entities.Club;
 import org.example.entities.Player;
-import org.example.repositories.ClubRepository;
-import org.example.repositories.PlayerRepository;
 import org.example.services.ClubService;
 import org.example.services.PlayerService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -76,7 +74,7 @@ public class CommandLine implements CommandLineRunner {
     }
 
     private  void listplayers(){
-        List<Player> players = playerService.fetchPlayerList();
+        List<PlayerReadDTO> players = playerService.fetchPlayerList();
         players.forEach(player -> System.out.println(player.toString()));
     }
     private void listclubs(){
@@ -101,7 +99,7 @@ public class CommandLine implements CommandLineRunner {
         String firstname = scanner.nextLine();
         System.out.println("Podaj nazwisko gracza");
         String lastname = scanner.nextLine();
-        playerService.deletePlayer(firstname,lastname);
+        playerService.deletePlayer2(firstname,lastname);
     }
 
 }
