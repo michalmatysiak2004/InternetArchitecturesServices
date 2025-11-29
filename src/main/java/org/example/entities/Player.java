@@ -2,6 +2,7 @@ package org.example.entities;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import lombok.*;
 
 import java.io.Serializable;
@@ -29,6 +30,7 @@ public class Player implements Comparable<Player>, Serializable {
     @Column(name="country")
     private String country;
 
+    @Min(value=0)
     @Column(name="goals")
     private int goals;
 
