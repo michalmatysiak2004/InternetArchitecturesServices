@@ -14,19 +14,18 @@ System składa się z następujących komponentów:
 ## 🛠 Technologie
 
 **Backend:**
-* Java 17/21
-* Spring Boot 3.x
+* Java 21
+* Spring Boot 3
 * Spring Cloud Gateway
 * Spring Data JPA
-* Database: [np. H2 / PostgreSQL / MySQL - wpisz właściwą]
+* Database: H2
 * Maven
 
 **Frontend:**
-* Angular 16+
+* Angular 20+
 * TypeScript
-* RxJS
-* [np. Angular Material / Bootstrap - wpisz jeśli używasz]
-
+* CSS
+* HTML 
 ---
 
 ## 🚀 Jak uruchomić projekt
@@ -36,5 +35,57 @@ Aby uruchomić aplikację, musisz mieć zainstalowane: Java JDK, Maven, Node.js 
 ### 1. Pobranie repozytorium
 
 ```bash
-git clone <adres-twojego-repo>
-cd moj-projekt
+git clone https://github.com/michalmatysiak2004/InternetArchitecturesServices.git
+cd InternetArchitecturesServices
+
+```
+
+### 2. Uruchomienie 3 microserwisów
+```bash
+cd backend/club-service
+mvn spring-boot:run
+# Serwis startuje na porcie: 8081
+cd ..
+cd backend/player-service
+mvn spring-boot:run
+# Serwis startuje na porcie: 8082
+cd..
+cd backend/gateway
+mvn spring-boot:run
+# Gateway startuje na porcie: 8080
+```
+
+### 3.Uruchomienie frontendu
+```bash
+cd frontend
+npm install
+ng serve
+
+```
+
+
+### 🔌 API Endpoints (Gateway)
+
+| Zasób | Metoda | URL (Gateway) | Przekierowanie do | Opis |
+| :--- | :---: | :--- | :--- | :--- |
+| **Kluby** | `GET` | `/api/clubs` | `club-service/clubs` | Lista klubów |
+| | `POST` | `/api/clubs` | `club-service/clubs` | Dodanie klubu |
+| | `GET` | `/api/clubs/{id}` | `club-service/clubs/{id}` | Szczegóły klubu |
+| **Piłkarze** | `GET` | `/api/players` | `player-service/players` | Lista piłkarzy |
+| | `POST` | `/api/players` | `player-service/players` | Dodanie piłkarza |
+| | `DELETE` | `/api/players/{id}`| `player-service/players/{id}`| Usunięcie piłkarza |
+
+
+
+### 📂 Struktura Projektu
+
+```text
+/
+├── backend/
+│   ├── gateway/         # Konfiguracja routingu
+│   ├── club-service/    # Moduł klubów (Controller, Service, Repository)
+│   └── player-service/  # Moduł piłkarzy (Controller, Service, Repository)
+├── frontend/            # Kod źródłowy aplikacji Angular (src/app/...)
+└── README.md
+
+
