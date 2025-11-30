@@ -1,0 +1,59 @@
+<p>add-player works!</p>
+<div class="add-player">
+  <h2>➕ Dodaj zawodnika</h2>
+
+  <form (ngSubmit)="submit()" #playerForm="ngForm">
+    <div>
+      <label for="firstName">Imię:</label>
+      <input
+        id="firstName"
+        name="firstName"
+        [(ngModel)]="firstName"
+        required
+      />
+    </div>
+
+    <div>
+      <label for="lastName">Nazwisko:</label>
+      <input
+        id="lastName"
+        name="lastName"
+        [(ngModel)]="lastName"
+        required
+      />
+    </div>
+
+    <div>
+      <label for="country">Kraj:</label>
+      <input
+        id="country"
+        name="country"
+        [(ngModel)]="country"
+        required
+      />
+    </div>
+
+    <div>
+      <label for="goals">Gole:</label>
+      <input
+        id="goals"
+        name="goals"
+        type="number"
+        [(ngModel)]="goals"
+        min="0"
+      />
+    </div>
+
+    <div>
+      <label for="clubId">ID Klubu:</label>
+      <input
+        id="clubId"
+        name="clubId"
+        [(ngModel)]="clubId"
+        readonly
+      />
+    </div>
+
+    <button type="submit">💾 Zapisz</button>
+  </form>
+</div>

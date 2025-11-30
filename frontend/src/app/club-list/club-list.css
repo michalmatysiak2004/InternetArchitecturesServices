@@ -1,0 +1,75 @@
+h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+button[routerLink] {
+  display: block;
+  margin: 1rem auto;
+  padding: 0.6rem 1.2rem;
+  background-color: #0078d4;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[routerLink]:hover {
+  background-color: #005fa3;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  max-width: 600px;
+  margin: 2rem auto;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+li {
+  background-color: #f4f4f4;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+li strong {
+  font-size: 1.1rem;
+  color: #222;
+}
+
+li button {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+li button:first-of-type {
+  background-color: #d9534f;
+  color: white;
+}
+
+li button:first-of-type:hover {
+  background-color: #c9302c;
+}
+
+li button:last-of-type {
+  background-color: #5bc0de;
+  color: white;
+}
+
+li button:last-of-type:hover {
+  background-color: #31b0d5;
+}

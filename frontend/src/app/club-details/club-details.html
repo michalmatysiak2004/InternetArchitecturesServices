@@ -1,0 +1,20 @@
+<p>club-details works!</p>
+<div class="club-details">
+  <h2>🏆 {{ name }}</h2>
+  <p><strong>Kraj:</strong> {{ country }}</p>
+  <p><strong>Tytuły:</strong> {{ titles }}</p>
+
+ <button [routerLink]="['/details', id, 'addPlayer']">➕ Dodaj zawodnika</button>
+
+  <h3>👥 Zawodnicy</h3>
+  <ul>
+  <li *ngFor="let player of players">
+    {{player.id}} {{ player.firstName }} {{ player.lastName}}
+    <button (click)="deletePlayer(player)">🗑️ Usuń</button>
+    <button [routerLink]="['/details', id, 'addPlayer', player.id]">✏️ Edytuj</button>
+  </li>
+</ul>
+
+  <!-- Nowy przycisk dodawania zawodnika -->
+ 
+</div>

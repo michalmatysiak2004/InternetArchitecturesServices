@@ -1,0 +1,24 @@
+<p>edit-player works!</p>
+
+<h2>Edytuj pilkarza</h2>
+<form (ngSubmit)="submit()">
+  <label>Imie:</label>
+  <input [(ngModel)]="firstName" name="firstName" required />
+<label>Nazwisko:</label>
+  <input [(ngModel)]="lastName" name="lastName" required />
+  <label>Kraj:</label>
+  <input [(ngModel)]="country" name="country" required />
+
+  <label>Liczba goli:</label>
+  <input type="number" [(ngModel)]="goals" name="goals" required min="0" />
+    <div>
+      <label for="clubId">ID Klubu:</label>
+      <input
+        id="clubId"
+        name="clubId"
+        [(ngModel)]="clubId"
+        readonly
+      />
+    </div>
+  <button type="submit">Zapisz zmiany</button>
+</form>

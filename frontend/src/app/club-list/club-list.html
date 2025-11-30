@@ -1,0 +1,12 @@
+<p>club-list works!</p>
+<button routerLink="/add">➕ Dodaj klub</button>
+<ul>
+  <li *ngFor="let club of clubs">
+     {{ club.name }}
+     <button (click)="deleteClub(club)">🗑️ Usuń</button>
+    <button [routerLink]="['/edit', club.id]">✏️ Edytuj</button>
+    <button [routerLink]="['/details',club.id]"> Szczegóły</button>
+    
+  </li>
+</ul>
+s
